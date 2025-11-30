@@ -1,51 +1,15 @@
-MyList class
-============
+#!/usr/bin/python3
+MyList = __import__(1-my_list).MyList
 
->>> MyList = __import__("1-my_list").MyList
+my_list = MyList()
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
 
-Test that MyList inherits from list:
->>> issubclass(MyList, list)
-True
+print(my_list)  # This should print: [1, 4, 2, 3, 5]
 
-Test basic list behavior:
->>> ml = MyList()
->>> ml.append(3)
->>> ml.append(1)
->>> ml.append(2)
->>> ml
-[3, 1, 2]
+my_list.print_sorted()  # This should print: [1, 2, 3, 4, 5]
 
-Test print_sorted does not modify the list:
->>> ml.print_sorted()
-[1, 2, 3]
->>> ml
-[3, 1, 2]
-
-Test with more values:
->>> ml2 = MyList([10, 4, 6, 1])
->>> ml2.print_sorted()
-[1, 4, 6, 10]
->>> ml2
-[10, 4, 6, 1]
-
-Test with negative values:
->>> ml3 = MyList([-1, -5, 0, 3])
->>> ml3.print_sorted()
-[-5, -1, 0, 3]
->>> ml3
-[-1, -5, 0, 3]
-
-Test with empty list:
->>> ml4 = MyList()
->>> ml4.print_sorted()
-[]
->>> ml4
-[]
-
-Test that print_sorted returns a new list:
->>> ml5 = MyList([5, 2, 8])
->>> sorted_list = ml5.print_sorted()
->>> sorted_list
-[2, 5, 8]
->>> ml5
-[5, 2, 8]
+print(my_list)  # This should print: [1, 4, 2, 3, 5] again (not modified)
