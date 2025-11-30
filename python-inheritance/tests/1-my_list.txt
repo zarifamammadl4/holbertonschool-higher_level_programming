@@ -1,7 +1,7 @@
 MyList class
 ============
 
->>> MyList = __import__(1-my_list).MyList
+>>> MyList = __import__("1-my_list").MyList
 
 Test that MyList inherits from list:
 >>> issubclass(MyList, list)
@@ -34,3 +34,18 @@ Test with negative values:
 [-5, -1, 0, 3]
 >>> ml3
 [-1, -5, 0, 3]
+
+Test with empty list:
+>>> ml4 = MyList()
+>>> ml4.print_sorted()
+[]
+>>> ml4
+[]
+
+Test that print_sorted returns a new list:
+>>> ml5 = MyList([5, 2, 8])
+>>> sorted_list = ml5.print_sorted()
+>>> sorted_list
+[2, 5, 8]
+>>> ml5
+[5, 2, 8]
