@@ -9,11 +9,15 @@ def serialize_and_save_to_file(data, filename):
         data (dict): Python dictionary to serialize
         filename (str): Name of the file to save JSON data
     """
+    if not isinstance(data, dict):
+        raise ValueError("Provided data must be a dictionary.")
+    
     try:
-        with open(filename, w) as f:
-            json.dump(data, f, indent=4)  # indent for readability
+        with open(filename, w, encoding=utf-8) as f:
+            json.dump(data, f, indent=4)
     except TypeError as e:
-        raise ValueError(f"Data provided is not JSON serializable: {e}")
+        # Raised if data contains non-serializable objects
+        raise ValueError(f"Data contains non-serializable objects: {e}")
     except Exception as e:
         raise IOError(f"Error writing to file {filename}: {e}")
 
@@ -28,8 +32,11 @@ def load_and_deserialize(filename):
         dict: Deserialized Python dictionary
     """
     try:
-        with open(filename, r) as f:
-            return json.load(f)
+        with open(filename, r, encoding=utf-8) as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            raise ValueError(f"JSON content is not a dictionary: {data}")
+        return data
     except FileNotFoundError:
         raise FileNotFoundError(f"The file {filename} does not exist.")
     except json.JSONDecodeError as e:
