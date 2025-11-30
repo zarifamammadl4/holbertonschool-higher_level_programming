@@ -1,0 +1,34 @@
+MyList class
+============
+
+Test that MyList inherits from list:
+>>> issubclass(MyList, list)
+True
+
+Test basic list behavior:
+>>> ml = MyList()
+>>> ml.append(3)
+>>> ml.append(1)
+>>> ml.append(2)
+>>> ml
+[3, 1, 2]
+
+Test print_sorted does not modify the list:
+>>> ml.print_sorted()
+[1, 2, 3]
+>>> ml
+[3, 1, 2]
+
+Test with more values:
+>>> ml2 = MyList([10, 4, 6, 1])
+>>> ml2.print_sorted()
+[1, 4, 6, 10]
+>>> ml2
+[10, 4, 6, 1]
+
+Test with negative values:
+>>> ml3 = MyList([-1, -5, 0, 3])
+>>> ml3.print_sorted()
+[-5, -1, 0, 3]
+>>> ml3
+[-1, -5, 0, 3]
