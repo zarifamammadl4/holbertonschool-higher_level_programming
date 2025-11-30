@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Defines the BaseGeometry class.
+Module defining the BaseGeometry class.
 """
 
 
@@ -8,7 +8,7 @@ class BaseGeometry:
     """BaseGeometry class with area and integer_validator methods."""
 
     def area(self):
-        """Raise an Exception indicating area() is not implemented."""
+        """Raises an Exception indicating area() is not implemented."""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
@@ -20,7 +20,7 @@ class BaseGeometry:
             value: The value to validate.
 
         Raises:
-            TypeError: If value is not an int.
+            TypeError: If value is not an int (excluding bool).
             ValueError: If value is <= 0.
         """
         if type(value) is not int:
