@@ -1,23 +1,43 @@
 #!/usr/bin/python3
 """
-This script adds all command line arguments to a Python list, 
-and saves them to a JSON file.
+This script adds all command line arguments to a Python list,
+and saves them to a JSON file named add_item.json.
+It uses the functions save_to_json_file and load_from_json_file
+to handle the JSON file.
 """
 
 import sys
-from 5-save_to_json_file import save_to_json_file
-from 6-load_from_json_file import load_from_json_file
+
+# Use importlib to import modules with invalid names
+import importlib.util
+import os
+
+# Import save_to_json_file
+spec = importlib.util.spec_from_file_location(
+    "save_to_json_file", os.path.join(os.path.dirname(__file__), "5-save_to_json_file.py")
+)
+save_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(save_module)
+save_to_json_file = save_module.save_to_json_file
+
+# Import load_from_json_file
+spec = importlib.util.spec_from_file_location(
+    "load_from_json_file", os.path.join(os.path.dirname(__file__), "6-load_from_json_file.py")
+)
+load_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(load_module)
+load_from_json_file = load_module.load_from_json_file
 
 filename = "add_item.json"
 
-# Try to load the current content of the file, if it exists
+# Load existing list if file exists, otherwise start with empty list
 try:
     items = load_from_json_file(filename)
 except FileNotFoundError:
     items = []
 
-# Add command line arguments to the list (excluding the script name)
+# Add all command line arguments (except script name)
 items.extend(sys.argv[1:])
 
-# Save the updated list back to the file
+# Save updated list back to file
 save_to_json_file(items, filename)
