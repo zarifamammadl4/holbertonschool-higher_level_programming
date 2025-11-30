@@ -1,8 +1,8 @@
--- 1-create_user.sql
--- Create user user_0d_1 with all privileges
-
+-- Create user user_0d_1 only if it does not already exist
 CREATE USER IF NOT EXISTS user_0d_1@localhost IDENTIFIED BY user_0d_1_pwd;
 
-GRANT ALL PRIVILEGES ON *.* TO user_0d_1@localhost WITH GRANT OPTION;
+-- Grant all privileges on server
+GRANT ALL PRIVILEGES ON *.* TO user_0d_1@localhost;
 
+-- Apply privileges
 FLUSH PRIVILEGES;
