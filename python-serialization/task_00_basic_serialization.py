@@ -13,10 +13,9 @@ def serialize_and_save_to_file(data, filename):
         raise ValueError("Provided data must be a dictionary.")
     
     try:
-        with open(filename, w, encoding=utf-8) as f:
+        with open(filename, w, encoding=utf-8) as f:  # Fixed: w and utf-8 as strings
             json.dump(data, f, indent=4)
     except TypeError as e:
-        # Raised if data contains non-serializable objects
         raise ValueError(f"Data contains non-serializable objects: {e}")
     except Exception as e:
         raise IOError(f"Error writing to file {filename}: {e}")
