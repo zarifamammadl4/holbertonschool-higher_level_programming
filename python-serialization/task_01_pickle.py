@@ -44,7 +44,6 @@ class CustomObject:
         try:
             with open(filename, rb) as f:
                 obj = pickle.load(f)
-            # Optional: ensure that the loaded object is an instance of CustomObject
             if isinstance(obj, cls):
                 return obj
             return None
