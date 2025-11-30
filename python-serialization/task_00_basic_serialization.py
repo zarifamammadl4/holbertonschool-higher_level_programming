@@ -1,44 +1,37 @@
-# task_00_basic_serialization.py
+#!/usr/bin/env python3
+"""
+Basic serialization module.
+
+Provides functions to:
+- serialize a Python dictionary to a JSON file
+- deserialize a JSON file back into a Python dictionary
+"""
+
 import json
+
 
 def serialize_and_save_to_file(data, filename):
     """
-    Serialize a Python dictionary to a JSON file.
+    Serialize a Python dictionary to JSON and save it to a file.
 
     Args:
-        data (dict): Python dictionary to serialize
-        filename (str): Name of the file to save JSON data
+        data (dict): The dictionary to serialize.
+        filename (str): The name of the output JSON file.
+                        If it exists, it will be overwritten.
     """
-    if not isinstance(data, dict):
-        raise ValueError("Data must be a dictionary.")
-    
-    try:
-        with open(filename, w, encoding=utf-8) as f:  # Fixed: w and utf-8 as strings
-            json.dump(data, f, indent=4)
-    except TypeError as e:
-        raise ValueError(f"Data contains non-serializable objects: {e}")
-    except Exception as e:
-        raise IOError(f"Error writing to file {filename}: {e}")
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f)
+
 
 def load_and_deserialize(filename):
     """
-    Load a JSON file and deserialize it into a Python dictionary.
+    Load JSON data from a file and deserialize it into a Python dictionary.
 
     Args:
-        filename (str): Name of the JSON file to read from
+        filename (str): The name of the input JSON file.
 
     Returns:
-        dict: Deserialized Python dictionary
+        dict: The deserialized dictionary.
     """
-    try:
-        with open(filename, r, encoding=utf-8) as f:
-            data = json.load(f)
-        if not isinstance(data, dict):
-            raise ValueError(f"JSON content is not a dictionary: {data}")
-        return data
-    except FileNotFoundError:
-        raise FileNotFoundError(f"The file {filename} does not exist.")
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Error decoding JSON from file {filename}: {e}")
-    except Exception as e:
-        raise IOError(f"Error reading from file {filename}: {e}")
+    with open(filename, "r", encoding="utf-8") as f:
+        return json.load(f)
