@@ -1,26 +1,25 @@
 #!/usr/bin/python3
 """
-Module defining the BaseGeometry class.
+This module defines the BaseGeometry class
 """
 
-
 class BaseGeometry:
-    """BaseGeometry class with area and integer_validator methods."""
+    """BaseGeometry class with area and integer_validator methods"""
 
     def area(self):
-        """Raises an Exception indicating area() is not implemented."""
+        """Raises an Exception indicating area() is not implemented"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        Validate that value is a positive integer.
+        Validates that value is a positive integer.
 
         Args:
             name (str): The name of the parameter.
             value: The value to validate.
 
         Raises:
-            TypeError: If value is not an int (excluding bool).
+            TypeError: If value is not an int (bools excluded).
             ValueError: If value is <= 0.
         """
         if type(value) is not int:
