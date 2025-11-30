@@ -2,7 +2,9 @@
 """
 This module defines a function to load an object from a JSON file.
 """
+
 import json
+
 
 def load_from_json_file(filename):
     """
@@ -13,6 +15,9 @@ def load_from_json_file(filename):
     
     Returns:
         object: The Python object created from the JSON data.
+    
+    This function opens the file in read mode, reads the JSON data, and converts
+    it into a corresponding Python object.
     """
     with open(filename, "r", encoding="utf-8") as file:
         return json.load(file)
