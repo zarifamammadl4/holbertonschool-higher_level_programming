@@ -1,45 +1,52 @@
-# task_01_pickle.py
+#!/usr/bin/python3
+"""Pickle serialization and deserialization for a custom class"""
+
 import pickle
-import os
+
 
 class CustomObject:
+    """Custom class with name, age, and is_student attributes"""
+
     def __init__(self, name, age, is_student):
         self.name = name
         self.age = age
         self.is_student = is_student
 
     def display(self):
-        """Print the object’s attributes in the required format"""
+        """Display object attributes"""
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
-        print(fIs Student: {self.is_student})
+        print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
         """
-        Serialize the current instance to a file using pickle.
-        If any error occurs, do not create the file.
+        Serialize the current object to a file using pickle
+
+        Args:
+            filename (str): File to write the pickled object
         """
         try:
-            with open(filename, wb) as f:
+            with open(filename, wb) as f:  # wb must be a string
                 pickle.dump(self, f)
         except Exception:
-            # Fail silently as per instructions
             return None
 
     @classmethod
     def deserialize(cls, filename):
         """
-        Deserialize an instance from a file using pickle.
-        If any error occurs (file missing or corrupted), return None
+        Deserialize a CustomObject from a file using pickle
+
+        Args:
+            filename (str): File to read the pickled object
+
+        Returns:
+            CustomObject | None: Returns the object or None if error occurs
         """
-        if not os.path.exists(filename):
-            return None
         try:
-            with open(filename, rb) as f:
+            with open(filename, rb) as f:  # rb must be a string
                 obj = pickle.load(f)
-            # Ensure the object is actually a CustomObject instance
-            if isinstance(obj, cls):
-                return obj
-            return None
+                if isinstance(obj, cls):
+                    return obj
+                return None
         except Exception:
             return None
