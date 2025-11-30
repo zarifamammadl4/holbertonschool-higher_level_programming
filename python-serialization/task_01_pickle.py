@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Serialization and deserialization using pickle"""
+"""Pickle serialization and deserialization for a custom class"""
 
 import pickle
 
 
 class CustomObject:
-    """Custom object with name, age, and is_student attributes"""
+    """Custom class with name, age, and is_student attributes"""
 
     def __init__(self, name, age, is_student):
         self.name = name
@@ -13,39 +13,40 @@ class CustomObject:
         self.is_student = is_student
 
     def display(self):
-        """Print the attributes in the specified format"""
+        """Display object attributes"""
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
         print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
-        """Serialize the instance to a file using pickle
+        """
+        Serialize the current object to a file using pickle
 
         Args:
-            filename (str): Path of the file to save the serialized object
-        Returns:
-            None if an exception occurs, otherwise nothing
+            filename (str): File to write the pickled object
         """
         try:
-            with open(filename, wb) as f:
+            with open(filename, wb) as f:  # wb must be a string
                 pickle.dump(self, f)
-        except (FileNotFoundError, pickle.PickleError, IOError):
+        except Exception:
             return None
 
     @classmethod
     def deserialize(cls, filename):
-        """Deserialize an instance from a file using pickle
+        """
+        Deserialize a CustomObject from a file using pickle
 
         Args:
-            filename (str): Path of the file to load the serialized object from
+            filename (str): File to read the pickled object
+
         Returns:
-            An instance of CustomObject or None if an error occurs
+            CustomObject | None: Returns the object or None if error occurs
         """
         try:
-            with open(filename, rb) as f:
+            with open(filename, rb) as f:  # rb must be a string
                 obj = pickle.load(f)
-            if isinstance(obj, cls):
-                return obj
-            return None
-        except (FileNotFoundError, pickle.PickleError, IOError):
+                if isinstance(obj, cls):
+                    return obj
+                return None
+        except Exception:
             return None
