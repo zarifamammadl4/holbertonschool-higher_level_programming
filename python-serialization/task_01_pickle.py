@@ -16,7 +16,7 @@ class CustomObject:
         """Print the attributes in the specified format"""
         print(f"Name: {self.name}")
         print(f"Age: {self.age}")
-        print(fIs Student: {self.is_student})
+        print(f"Is Student: {self.is_student}")
 
     def serialize(self, filename):
         """Serialize the instance to a file using pickle
