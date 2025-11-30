@@ -1,10 +1,7 @@
--- Create database (no fail)
-CREATE DATABASE IF NOT EXISTS hbtn_0d_2;
+-- Create user user_0d_2 with password
+CREATE USER IF NOT EXISTS user_0d_2@localhost IDENTIFIED BY user_0d_2_pwd;
 
--- Create user (fallback for older MySQL/MariaDB)
-CREATE USER user_0d_2@localhost IDENTIFIED BY user_0d_2_pwd;
-
--- Give SELECT permission
+-- Grant SELECT privilege on hbtn_0d_2 database
 GRANT SELECT ON hbtn_0d_2.* TO user_0d_2@localhost;
 
 FLUSH PRIVILEGES;
