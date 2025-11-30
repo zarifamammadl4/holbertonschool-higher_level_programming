@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-"""Basic serialization and deserialization module"""
+"""Basic serialization and deserialization using JSON"""
 
 import json
 
 
 def serialize_and_save_to_file(data, filename):
     """
-    Serialize a Python dictionary to a JSON file.
+    Serialize a Python dictionary and save it to a JSON file.
 
     Args:
         data (dict): Python dictionary to serialize
-        filename (str): Name of the file to save the JSON data
+        filename (str): Name of the output JSON file
 
     Returns:
         bool: True if serialization was successful, False otherwise
@@ -29,7 +29,7 @@ def load_and_deserialize(filename):
     Load a JSON file and deserialize it to a Python dictionary.
 
     Args:
-        filename (str): Name of the JSON file to read
+        filename (str): Name of the input JSON file
 
     Returns:
         dict: Python dictionary representing the JSON data, or None if failed
