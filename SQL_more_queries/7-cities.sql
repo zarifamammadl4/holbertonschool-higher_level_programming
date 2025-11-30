@@ -1,0 +1,20 @@
+-- 7-cities.sql
+-- Create database hbtn_0d_usa and cities table with foreign key to states table
+
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS hbtn_0d_usa;
+
+-- Use the database
+USE hbtn_0d_usa;
+
+-- Create the cities table if it doesn't exist
+CREATE TABLE IF NOT EXISTS cities (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    state_id INT NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    CONSTRAINT fk_state
+        FOREIGN KEY (state_id)
+        REFERENCES states(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
