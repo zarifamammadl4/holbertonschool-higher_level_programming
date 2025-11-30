@@ -7,14 +7,13 @@ to handle the JSON file.
 """
 
 import sys
-
-# Use importlib to import modules with invalid names
 import importlib.util
 import os
 
 # Import save_to_json_file
 spec = importlib.util.spec_from_file_location(
-    "save_to_json_file", os.path.join(os.path.dirname(__file__), "5-save_to_json_file.py")
+    "save_to_json_file",
+    os.path.join(os.path.dirname(__file__), "5-save_to_json_file.py")
 )
 save_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(save_module)
@@ -22,7 +21,8 @@ save_to_json_file = save_module.save_to_json_file
 
 # Import load_from_json_file
 spec = importlib.util.spec_from_file_location(
-    "load_from_json_file", os.path.join(os.path.dirname(__file__), "6-load_from_json_file.py")
+    "load_from_json_file",
+    os.path.join(os.path.dirname(__file__), "6-load_from_json_file.py")
 )
 load_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(load_module)
