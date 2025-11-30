@@ -8,4 +8,4 @@ class MyList(list):
 
     def print_sorted(self):
         """Print the list in ascending sorted order (without modifying it)."""
-        print(sorted(self))  # Works fine for an empty list as well
+        print(sorted(self))
