@@ -4,13 +4,13 @@ import json
 def serialize_and_save_to_file(data, filename):
     """
     Serialize a Python dictionary to a JSON file.
-    
+
     Args:
         data (dict): Python dictionary to serialize
         filename (str): Name of the file to save JSON data
     """
     if not isinstance(data, dict):
-        raise ValueError("Provided data must be a dictionary.")
+        raise ValueError("Data must be a dictionary.")
     
     try:
         with open(filename, w, encoding=utf-8) as f:  # Fixed: w and utf-8 as strings
@@ -23,10 +23,10 @@ def serialize_and_save_to_file(data, filename):
 def load_and_deserialize(filename):
     """
     Load a JSON file and deserialize it into a Python dictionary.
-    
+
     Args:
         filename (str): Name of the JSON file to read from
-        
+
     Returns:
         dict: Deserialized Python dictionary
     """
