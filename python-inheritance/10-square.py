@@ -14,10 +14,11 @@ class Square(Rectangle):
 
         The size is validated by integer_validator.
         """
-        self.integer_validator("size", size)  # Validate size
-        self.__size = size  # Private attribute
-        super().__init__(size, size)  # Pass size as both width and height to the parent (Rectangle)
+        self.integer_validator("size", size)
+        self.__size = size
+        super().__init__(size, size)  # Pass size as both width and height
 
     def area(self):
         """Return the area of the square."""
-        return self.__size * self.__size  # or use self.__width * self.__height, inherited from Rectangle
+        return self.__size * self.__size
+
