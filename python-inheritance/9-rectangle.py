@@ -1,29 +1,27 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle class, which inherits from BaseGeometry.
+This module defines the Square class, which inherits from Rectangle.
 """
 
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Rectangle = __import__(9-rectangle).Rectangle
 
 
-class Rectangle(BaseGeometry):
-    """Rectangle class that inherits from BaseGeometry."""
+class Square(Rectangle):
+    """Square class that inherits from Rectangle."""
 
-    def __init__(self, width, height):
-        """Initialize the Rectangle with width and height.
+    def __init__(self, size):
+        """Initialize the Square with size.
 
-        Both width and height must be positive integers validated
-        by the integer_validator method.
+        The size is validated by integer_validator.
         """
-        self.integer_validator("width", width)  # Validate width
-        self.integer_validator("height", height)  # Validate height
-        self.__width = width  # Private attribute
-        self.__height = height  # Private attribute
+        # Validate size
+        self.integer_validator("size", size)
+        # Private attribute
+        self.__size = size
+        # Pass size as both width and height to the parent (Rectangle)
+        super().__init__(size, size)
 
     def area(self):
-        """Return the area of the rectangle."""
-        return self.__width * self.__height
-
-    def __str__(self):
-        """Return a string representation of the Rectangle."""
-        return f"[Rectangle] {self.__width}/{self.__height}"
+        """Return the area of the square."""
+        # or use self.__width * self.__height, inherited from Rectangle
+        return self.__size * self.__size
